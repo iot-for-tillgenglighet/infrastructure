@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-tfv
+  namespace: iot
+  labels:
+    app: ingress-tfv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-tfv
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ingress-tfv
+    spec:
+      containers:
+      - name: ingress-tfv
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-trafikverket/ingress-trafikverket
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4369
+          name: discovery
+          protocol: TCP
+        - containerPort: 5672
+          name: amqp
+          protocol: TCP
+        - containerPort: 25672
+          name: internode
+          protocol: TCP
+        - containerPort: 15672
+          name: httpapi
+          protocol: TCP
+        
