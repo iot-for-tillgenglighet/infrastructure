@@ -2,15 +2,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ingress-tfv
+  name: rabbitmq
   namespace: iot
   labels:
-    app: ingress-tfv
+    app: rabbitmq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ingress-tfv
+      app: rabbitmq
   strategy:
     rollingUpdate:
       maxUnavailable: 0
@@ -18,22 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: ingress-tfv
+        app: rabbitmq
     spec:
       containers:
-      - name: ingress-tfv
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-trafikverket/ingress-tfv:54ca7938ba924aa85709cb452a52fa2dc7fb096b
+      - name: rabbitmq
+        image: rabbitmq:latest
         env:
-        - name: TFV_API_AUTH_KEY
-          valueFrom:
-            secretKeyRef:
-              name: api-key
-              key: tfv-api-key
-        - name: RABBITMQ_HOST
-          valueFrom:
-            secretKeyRef:
-              name: rabbitmq
-              key: host
         - name: RABBITMQ_USER
           valueFrom:
             secretKeyRef:
@@ -44,6 +34,10 @@ spec:
             secretKeyRef:
               name: rabbitmq
               key: password
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 15; rabbitmqctl add_user user bitnami; rabbitmqctl set_permissions user \".*\" \".*\" \".*\";"]
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4369
@@ -60,4 +54,3 @@ spec:
           protocol: TCP
       imagePullSecrets:
       - name: regcred
-        
