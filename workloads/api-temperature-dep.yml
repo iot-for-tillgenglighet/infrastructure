@@ -39,12 +39,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: api-temperature-envvar
-              key: dbuser
+              key: db-user
         - name: TEMPERATURE_DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: api-temperature-envvar
-              key: dbpassword
+              key: db-password
         ports:
         - containerPort: 8282
           name: http
