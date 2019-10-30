@@ -6,48 +6,48 @@ metadata:
   namespace: iot
   labels:
     app: api-temperature
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-temperature
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: rollingUpdate
+  template:
+    metadata:
+      labels:
         app: api-temperature
-    strategy:
-      rollingUpdate:
-        maxUnavailable: 0
-      type: rollingUpdate
-    template:
-      metadata:
-        labels:
-          app: api-temperature
-      spec:
-        containers:
-        - name: api-temperature
-          image: docker.pkg.github.com/iot-for-tillgenglighet/api-temperature/api-temperature:9f7eb6f192cb20a7a29c0e8d40d523686c27110c
-          imagePullPolicy: IfNotPresent
-          env:
-          - name: TEMPERATURE_DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: api-temperature-envvar
-                key: db-host
-          - name: TEMPERATURE_DB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: api-temperature-envvar
-                key: db-name
-          - name: TEMPERATURE_DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: api-temperature-envvar
-                key: dbuser
-          - name: TEMPERATURE_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: api-temperature-envvar
-                key: dbpassword
-          ports:
-          - containerPort: 8282
-            name: http
-            protocol: TCP
-        imagePullSecrets:
-        - name: regcred
+    spec:
+      containers:
+      - name: api-temperature
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-temperature/api-temperature:9f7eb6f192cb20a7a29c0e8d40d523686c27110c
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TEMPERATURE_DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: api-temperature-envvar
+              key: db-host
+        - name: TEMPERATURE_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: api-temperature-envvar
+              key: db-name
+        - name: TEMPERATURE_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: api-temperature-envvar
+              key: dbuser
+        - name: TEMPERATURE_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: api-temperature-envvar
+              key: dbpassword
+        ports:
+        - containerPort: 8282
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: regcred
