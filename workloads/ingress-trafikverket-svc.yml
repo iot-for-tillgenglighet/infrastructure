@@ -10,20 +10,3 @@ spec:
   type: NodePort
   selector:
     app: iot
-  ports:
-    - name: discovery
-      port: 4639
-      targetPort: 4639
-      protocol: TCP
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      protocol: TCP
-    - name: internode
-      port: 25672
-      targetPort: 25672
-      protocol: TCP
-    - name: httpapi
-      nodePort: 30001
-      targetPort: 15672
-      port: 15672
