@@ -46,7 +46,7 @@ spec:
               name: api-temperature-envvar
               key: db-password
         - name: TEMPERATURE_API_PORT
-          value: 8282
+          value: '8282'
         ports:
         - containerPort: 8282
           name: http
