@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq
-        image: rabbitmq:latest
+        image: rabbitmq:3.7.22-rc.1-management-alpine
         env:
         - name: RABBITMQ_USER
           valueFrom:
@@ -37,7 +37,8 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "sleep 15; rabbitmqctl add_user user bitnami; rabbitmqctl set_permissions user \".*\" \".*\" \".*\";"]
+              command: ["/bin/sh", "-c", "sleep 15; rabbitmqctl add_user user bitnami;\
+                  \ rabbitmqctl set_permissions user \".*\" \".*\" \".*\";"]
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4369
