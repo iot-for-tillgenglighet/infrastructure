@@ -5,13 +5,13 @@ metadata:
   name: api-temperature-service
   namespace: iot
   labels:
-    app: iot
+    app: api-temperature
 spec:
   type: NodePort
   selector:
-    app: iot
+    app: api-temperature
   ports:
     - name: http
-      port: 8282
+      port: 80
       targetPort: 8282
       protocol: TCP
