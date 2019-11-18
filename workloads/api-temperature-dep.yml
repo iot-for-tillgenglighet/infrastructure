@@ -49,6 +49,8 @@ spec:
               key: db-password
         - name: TEMPERATURE_API_PORT
           value: '8282'
+        - name: RABBITMQ_HOST
+          value: rabbitmq.iot.svc.cluster.local
         ports:
         - containerPort: 8282
           name: http
