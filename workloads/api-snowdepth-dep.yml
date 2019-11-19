@@ -48,7 +48,7 @@ spec:
               name: api-snowdepth-envvar
               key: db-password
         - name: SNOWDEPTH_DB_SSLMODE
-          value: 'disable'
+          value: 'require'
         - name: SNOWDEPTH_API_PORT
           value: '8282'
         - name: RABBITMQ_HOST
