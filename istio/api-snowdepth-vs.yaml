@@ -11,9 +11,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: "/api/graphql/"
+        prefix: "/api/graphql"
     rewrite:
-      uri: "/api/graphql/"
+      uri: "/api/graphql"
     route:
     - destination:
         host: api-snowdepth-service.iot.svc.cluster.local
