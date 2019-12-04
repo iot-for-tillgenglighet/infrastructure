@@ -1,0 +1,1 @@
+{"jobID":"889619df-71cf-bada-f5c6-e17dfe240d9e","spec":{"type":"policy","cause":{"Message":"","User":"Jens Albonius \u003cjens.albonius@gmail.com\u003e"},"spec":{"iot:deployment/api-temperature":{"add":{"tag_all":"glob:prod-*"},"remove":{}}}},"result":null}
