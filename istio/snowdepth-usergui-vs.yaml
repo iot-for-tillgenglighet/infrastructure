@@ -13,7 +13,7 @@ spec:
     - uri:
         prefix: "/snowdepth/"
     - uri:
-        exact: "/"
+        prefix: "/"
     rewrite:
       uri: "/"
     route:
