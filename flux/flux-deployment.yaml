@@ -15,6 +15,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/port: "3031" # tell prometheus to scrape /metrics endpoint's port.
+        sidecar.istio.io/inject: "true"
       labels:
         name: flux
     spec:
@@ -74,4 +75,5 @@ spec:
         - --git-label=flux-sync
         - --git-user=Flux automation
         - --git-email=flux@noreply.github.com
+        - --git-ci-skip=true
         - --listen-metrics=:3031
