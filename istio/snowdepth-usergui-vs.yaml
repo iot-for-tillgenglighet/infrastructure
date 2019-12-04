@@ -12,6 +12,8 @@ spec:
   - match:
     - uri:
         prefix: "/snowdepth/"
+    - uri:
+        exact: "/"
     rewrite:
       uri: "/"
     route:
@@ -19,3 +21,5 @@ spec:
         host: snowdepth-usergui-service.iot.svc.cluster.local
         port:
           number: 80
+
+      
