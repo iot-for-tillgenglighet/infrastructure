@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-temperature
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-temperature/api-temperature:prod-a65b688d771c8ac867d618506aa03448cb31516d
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-temperature/api-temperature:prod-8abd8db6d1396736c8f065fd70695cd9a58d05b5
         imagePullPolicy: IfNotPresent
         env:
         - name: TEMPERATURE_DB_HOST
