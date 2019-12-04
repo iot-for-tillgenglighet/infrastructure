@@ -6,6 +6,9 @@ metadata:
   namespace: iot
   labels:
     app: api-temperature
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.api-temperature: glob:prod:-*
 spec:
   replicas: 1
   selector:
