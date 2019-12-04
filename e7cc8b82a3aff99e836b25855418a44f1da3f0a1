@@ -1,0 +1,1 @@
+{"jobID":"ef85043b-8023-5c50-bcb3-7cb73d0f38a0","spec":{"type":"policy","cause":{"Message":"","User":"Jens Albonius \u003cjens.albonius@gmail.com\u003e"},"spec":{"iot:deployment/snowdepth-usergui":{"add":{"tag_all":"glob:prod-*"},"remove":{}}}},"result":null}
