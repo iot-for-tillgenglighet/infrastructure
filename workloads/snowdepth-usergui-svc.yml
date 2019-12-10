@@ -19,3 +19,38 @@ spec:
       port: 443
       targetPort: 443
       protocol: TCP
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: snowdepth-usergui-vs
+  namespace: iot
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - iot-hub-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/snowdepth/"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: snowdepth-usergui-service.iot.svc.cluster.local
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: snowdepth-usergui-dr
+  namespace: iot
+spec:
+  host: snowdepth-usergui-service.iot.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+    tls:
+      mode: ISTIO_MUTUAL
