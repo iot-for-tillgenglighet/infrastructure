@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: snowdepth-usergui
+  name: www-iot-hub
   namespace: iot
   labels:
-    app: snowdepth-usergui
+    app: www-iot-hub
   annotations:
     fluxcd.io/automated: "true"
-    fluxcd.io/tag.snowdepth-usergui: glob:prod-*
+    fluxcd.io/tag.www-iot-hub: glob:prod-*
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: snowdepth-usergui
+      app: www-iot-hub
   strategy:
     rollingUpdate:
       maxUnavailable: 0
@@ -23,18 +23,15 @@ spec:
       annotations:
         sidecar.istio.io/inject: "true"
       labels:
-        app: snowdepth-usergui
+        app: www-iot-hub
     spec:
       containers:
-      - name: snowdepth-usergui
-        image: docker.pkg.github.com/iot-for-tillgenglighet/snowdepth-usergui/snowdepth-usergui:prod-4ed8ea9270cf9463cf2b5c2c62782479694a13db
+      - name: www-iot-hub
+        image: docker.pkg.github.com/iot-for-tillgenglighet/www-iot-hub/www-iot-hub:prod-e4464fe5209b7b0d281c8991bd1b6282eae7b972
         imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 80
+        ports: 
+        - containerPort: 3000
           name: http
-          protocol: TCP
-        - containerPort: 443
-          name: https
           protocol: TCP
       imagePullSecrets:
       - name: regcred
