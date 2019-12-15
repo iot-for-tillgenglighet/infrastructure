@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-mqtt
+  namespace: iot
+  labels:
+    app: ingress-mqtt
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.ingress-mqtt: glob:prod-*
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-mqtt
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: ingress-mqtt
+    spec:
+      containers:
+      - name: ingress-mqtt
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-1bd0bc3340fe66b3a334f66010de88ea7d031403
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MQTT_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: mqtt-host
+        - name: MQTT_PORT
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: mqtt-port
+        - name: MQTT_USER
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: mqtt-user
+        - name: MQTT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: mqtt-password
+        - name: RABBITMQ_USER
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: rabbitmq-user
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: rabbitmq-password
+        - name: RABBITMQ_HOST
+          value: 'rabbitmq.iot.svc.cluster.local'
+      imagePullSecrets:
+      - name: regcred
+        
+        
+        
+     
