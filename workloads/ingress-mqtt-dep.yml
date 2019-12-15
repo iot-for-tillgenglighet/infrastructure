@@ -40,6 +40,11 @@ spec:
             secretKeyRef:
               name: ingress-mqtt-envvar
               key: mqtt-port
+        - name: MQTT-TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: mqtt-topic
         - name: MQTT_USER
           valueFrom:
             secretKeyRef:
