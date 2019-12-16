@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: ingress-mqtt
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-1bd0bc3340fe66b3a334f66010de88ea7d031403
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-9a26100309f27e69341cf111ad2539bd6d1ea864
         imagePullPolicy: IfNotPresent
         env:
         - name: MQTT_HOST
@@ -69,7 +69,6 @@ spec:
           value: 'rabbitmq.iot.svc.cluster.local'
       imagePullSecrets:
       - name: regcred
-        
-        
-        
-     
+
+
+
