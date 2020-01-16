@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: ingress-mqtt
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-cbc53c41c12a336bb9e3945827352ea3846ed105
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-1cd662f41fa464e43bb14ba2cd7f38589cf3583d
         imagePullPolicy: IfNotPresent
         env:
         - name: MQTT_HOST
