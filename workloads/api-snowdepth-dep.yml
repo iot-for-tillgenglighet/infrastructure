@@ -6,6 +6,9 @@ metadata:
   namespace: iot
   labels:
     app: api-snowdepth
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.api-snowdepth: glob:prod-*
 spec:
   replicas: 1
   selector:
@@ -24,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-snowdepth
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-snowdepth/api-snowdepth:7f19e21f6918c8e2262c358afea48669cac76eec
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-snowdepth/api-snowdepth:prod-d3433437bf4ddb2433d937bf9a9c2820fdbbc069
         imagePullPolicy: IfNotPresent
         env:
         - name: SNOWDEPTH_DB_HOST
