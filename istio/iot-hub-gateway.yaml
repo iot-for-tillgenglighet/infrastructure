@@ -13,12 +13,15 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: "iotsundsvall-credential"
+      credentialName: "ingress-cert"
     hosts:
     - "*"
   - port:
       number: 80
       name: http
       protocol: HTTP
+    tls:
+      httpsRedirect: true
     hosts:
     - "*"
+    
