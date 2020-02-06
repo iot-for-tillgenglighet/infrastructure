@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: www-iot-hub
-        image: docker.pkg.github.com/iot-for-tillgenglighet/www-iot-hub/www-iot-hub:prod-d7d32845f56bc09f04284ba7873e48dd36a8bf40
+        image: docker.pkg.github.com/iot-for-tillgenglighet/www-iot-hub/www-iot-hub:prod-a77561d9532f73f2eb0a1d1ef1027fd28055cf87
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
