@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-snowdepth
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-snowdepth/api-snowdepth:prod-d3433437bf4ddb2433d937bf9a9c2820fdbbc069
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-snowdepth/api-snowdepth:prod-2291b954290e88fb57997c0000b77301f84852fd
         imagePullPolicy: IfNotPresent
         env:
         - name: SNOWDEPTH_DB_HOST
@@ -62,7 +62,6 @@ spec:
           protocol: TCP
       imagePullSecrets:
       - name: regcred
-        
-        
-        
-     
+
+
+
