@@ -29,9 +29,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: "/api/problemreport/graphql"
+        prefix: "/api/graphql"
     rewrite:
-      uri: "/api/problemreport/graphql"
+      uri: "/api/graphql"
     route:
     - destination:
         host: api-problemreport-service.iot.svc.cluster.local
