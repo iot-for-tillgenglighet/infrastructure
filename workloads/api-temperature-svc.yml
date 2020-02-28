@@ -29,9 +29,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: "/api/temperature/"
+        prefix: "/api/graphql"
     rewrite:
-      uri: "/api/temperature/"
+      uri: "/api/graphql"
     route:
     - destination:
         host: api-temperature-service.iot.svc.cluster.local
