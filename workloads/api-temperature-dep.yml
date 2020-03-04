@@ -51,11 +51,11 @@ spec:
               name: api-temperature-envvar
               key: db-password
         - name: TEMPERATURE_API_PORT
-          value: '8282'
+          value: '8181'
         - name: RABBITMQ_HOST
           value: rabbitmq.iot.svc.cluster.local
         ports:
-        - containerPort: 8282
+        - containerPort: 8181
           name: http
           protocol: TCP
       imagePullSecrets:

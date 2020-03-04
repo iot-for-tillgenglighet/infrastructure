@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-graphql
+  namespace: iot
+  labels:
+    app: api-graphql
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.api-graphql: glob:prod-*
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-graphql
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: api-graphql
+    spec:
+      containers:
+      - name: api-graphql
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-graphql/api-graphql:prod-6d4bfaca35a28d062fe356341187112f8b79d5a2
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: API_GQL_FEDERATION_PORT
+          value: '8989'
+        - name: API_GQL_FEDERATION_SVCS
+          value: 'api-problemreport:8383,api-snowdepth:8282,api-temperature:8181,iot-device-registry:8080'
+        ports:
+        - containerPort: 8989
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: regcred

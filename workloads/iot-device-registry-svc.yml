@@ -1,25 +1,25 @@
 ---
 apiVersion: v1
 kind: Service
-metadata:
-  name: api-temperature-service
+metadata: 
+  name: iot-device-registry-service
   namespace: iot
   labels:
-    app: api-temperature
+    app: iot-device-registry
 spec:
   type: NodePort
   selector:
-    app: api-temperature
+    app: iot-device-registry
   ports:
     - name: http
       port: 80
-      targetPort: 8181
+      targetPort: 8080
       protocol: TCP
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: api-temperature-vs
+  name: iot-device-registry-vs
   namespace: iot
 spec:
   hosts:
@@ -34,17 +34,17 @@ spec:
       uri: "/api/graphql"
     route:
     - destination:
-        host: api-temperature-service.iot.svc.cluster.local
+        host: iot-device-registry-service.iot.svc.cluster.local
         port:
           number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: api-temperature-dr
+  name: iot-device-registry-dr
   namespace: iot
 spec:
-  host: api-temperature-service.iot.svc.cluster.local
+  host: iot-device-registry-service.iot.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: LEAST_CONN
