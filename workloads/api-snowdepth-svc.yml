@@ -29,7 +29,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: "/api/graphql"
+        prefix: "/api/snowdepth/graphql"
     rewrite:
       uri: "/api/graphql"
     route:

@@ -33,7 +33,7 @@ spec:
         - name: API_GQL_FEDERATION_PORT
           value: '8989'
         - name: API_GQL_FEDERATION_SVCS
-          value: 'api-problemreport:8383,api-snowdepth:8282,api-temperature:8181,iot-device-registry:8080'
+          value: 'api-problemreport-service.iot.svc.cluster.local:80,api-snowdepth-service.iot.svc.cluster.local:80,api-temperature-service.iot.svc.cluster.local:80,iot-device-registry-service.iot.svc.cluster.local:80'
         ports:
         - containerPort: 8989
           name: http
