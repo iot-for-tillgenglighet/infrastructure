@@ -37,6 +37,16 @@ spec:
         host: api-snowdepth-service.iot.svc.cluster.local
         port:
           number: 80
+  - match:
+    - uri:
+        prefix: "/ngsi-ld/v1"
+    rewrite:
+      uri: "/ngsi-ld/v1"
+    route:
+    - destination:
+        host: api-snowdepth-service.iot.svc.cluster.local
+        port:
+          number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
