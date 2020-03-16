@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: ingress-tfv
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-trafikverket/ingress-tfv:prod-244b5d58ef579f19cbbe57750c0f5d4372bc8636
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-trafikverket/ingress-tfv:prod-591b2176d4ea97edc59838279c3a2b4c8b782d5e
         env:
         - name: TFV_API_AUTH_KEY
           valueFrom:
