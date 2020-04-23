@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-azure-servicebus
+  namespace: iot
+  labels:
+    app: ingress-azure-servicebus
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.ingress-azure-servicebus: glob:prod-*
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-azure-servicebus
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: ingress-azure-servicebus
+    spec:
+      containers:
+        - name: ingress-azure-servicebus
+          image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod_3ebb0547e97d81913e70a1d96c5015064af44e22
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RABBITMQ_HOST
+              value: rabbitmq.iot.svc.cluster.local
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-mqtt-envvar
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-mqtt-envvar
+                  key: rabbitmq-password
+            - name: AZURESERVICEBUS_TOPICNAME
+              value: topicname
+            - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
+              value: subscriptionname
+            - name: AZURESERVICEBUS_CONNECTIONSTRING
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-azure-servicebus-envvar
+                  key: azureservicebus-password
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
