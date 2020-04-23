@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: ingress-azure-servicebus
-          image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod_3ebb0547e97d81913e70a1d96c5015064af44e22
+          image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod_62933240e578ca281b7b93c1b5a6a02339ac9331
           imagePullPolicy: IfNotPresent
           env:
             - name: RABBITMQ_HOST
@@ -50,7 +50,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: ingress-azure-servicebus-envvar
-                  key: azureservicebus-password
+                  key: azureservicebus-connectionstring
           ports:
             - containerPort: 5000
               name: http
