@@ -26,34 +26,34 @@ spec:
         app: ingress-azure-servicebus
     spec:
       containers:
-      - name: ingress-azure-servicebus
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-3470980a9eb399b2ffb0769550e307144e3affef
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: RABBITMQ_HOST
-          value: rabbitmq.iot.svc.cluster.local
-        - name: RABBITMQ_USER
-          valueFrom:
-            secretKeyRef:
-              name: ingress-mqtt-envvar
-              key: rabbitmq-user
-        - name: RABBITMQ_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: ingress-mqtt-envvar
-              key: rabbitmq-password
-        - name: AZURESERVICEBUS_TOPICNAME
-          value: topicname
-        - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
-          value: subscriptionname
-        - name: AZURESERVICEBUS_CONNECTIONSTRING
-          valueFrom:
-            secretKeyRef:
-              name: ingress-azure-servicebus-envvar
-              key: azureservicebus-connectionstring
-        ports:
-        - containerPort: 5000
-          name: http
-          protocol: TCP
+        - name: ingress-azure-servicebus
+          image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-3470980a9eb399b2ffb0769550e307144e3affef
+          imagePullPolicy: IfNotPresent
+          env:
+            #        - name: RABBITMQ_HOST
+            #          value: rabbitmq.iot.svc.cluster.local
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-mqtt-envvar
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-mqtt-envvar
+                  key: rabbitmq-password
+            - name: AZURESERVICEBUS_TOPICNAME
+              value: topicname
+            - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
+              value: subscriptionname
+            - name: AZURESERVICEBUS_CONNECTIONSTRING
+              valueFrom:
+                secretKeyRef:
+                  name: ingress-azure-servicebus-envvar
+                  key: azureservicebus-connectionstring
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
