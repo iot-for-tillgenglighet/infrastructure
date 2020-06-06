@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-graphql
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-graphql/api-graphql:prod-a1a4fa145c1ef38e6cf178d2373372381ab3e9eb
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-graphql/api-graphql:prod-0a98ab6bb5daea8ed01ab37d6a314a27cc52a7e1
         imagePullPolicy: IfNotPresent
         env:
         - name: API_GQL_FEDERATION_PORT
