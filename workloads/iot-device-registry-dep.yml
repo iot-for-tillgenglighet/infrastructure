@@ -32,6 +32,8 @@ spec:
         env:
         - name: SERVICE_PORT
           value: '8080'
+        - name: RABBITMQ_HOST
+          value: rabbitmq.iot.svc.cluster.local
         ports:
         - containerPort: 8080
           name: http
