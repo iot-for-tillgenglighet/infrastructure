@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: iot-device-registry
-        image: docker.pkg.github.com/iot-for-tillgenglighet/iot-device-registry/iot-device-registry:prod-092d650ba7053ced4cf8a53908bf33c4f9b39dfe
+        image: docker.pkg.github.com/iot-for-tillgenglighet/iot-device-registry/iot-device-registry:prod-54ec92c5147d9ccdf300ce7a11dd6c03199f567c
         imagePullPolicy: IfNotPresent
         env:
         - name: SERVICE_PORT
