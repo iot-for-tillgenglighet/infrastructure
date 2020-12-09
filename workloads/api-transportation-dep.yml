@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-transportation
+  namespace: iot
+  labels:
+    app: api-transportation
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.api-transportation: glob:prod-*
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api-transportation
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: api-transportation
+    spec:
+      containers:
+      - name: api-transportation
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-transportation/api-transportation:prod-4277c6e568e9ed5a2ab8b4324e1a8cf5243d74a3
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TRANSPORTATION_API_PORT
+          value: '8484'
+        ports:
+        - containerPort: 8484
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: regcred
