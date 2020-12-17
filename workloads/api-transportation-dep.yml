@@ -32,6 +32,8 @@ spec:
         env:
         - name: TRANSPORTATION_API_PORT
           value: '8484'
+        - name: RABBITMQ_HOST
+          value: 'rabbitmq.iot.svc.cluster.local'
         ports:
         - containerPort: 8484
           name: http
