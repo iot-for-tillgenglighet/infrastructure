@@ -6,6 +6,7 @@ metadata:
   namespace: iot
   labels:
     app: ingress-azure-servicebus
+    tier: ingress
   annotations:
     fluxcd.io/automated: "true"
     fluxcd.io/tag.ingress-azure-servicebus: glob:prod-*
