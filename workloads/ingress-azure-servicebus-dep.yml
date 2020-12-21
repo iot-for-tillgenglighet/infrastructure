@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: ingress-azure-servicebus
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-b65b5bf35f78fa50801b7d68893c9e6ae664d24d
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-caee6120a2c6e50a210dea91d7b596a0736a1d5f
         imagePullPolicy: IfNotPresent
         env:
             #        - name: RABBITMQ_HOST
