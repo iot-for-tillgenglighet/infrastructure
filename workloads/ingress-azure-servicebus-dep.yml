@@ -31,18 +31,8 @@ spec:
         image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-6a5ea18e401fcbe704528d5e1e7524f83a51126d
         imagePullPolicy: IfNotPresent
         env:
-            #        - name: RABBITMQ_HOST
-            #          value: rabbitmq.iot.svc.cluster.local
-        - name: RABBITMQ_USER
-          valueFrom:
-            secretKeyRef:
-              name: ingress-mqtt-envvar
-              key: rabbitmq-user
-        - name: RABBITMQ_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: ingress-mqtt-envvar
-              key: rabbitmq-password
+        - name: ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS
+          value: true
         - name: AZURESERVICEBUS_TOPICNAME
           value: tillgangligavagar
         - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
@@ -56,5 +46,9 @@ spec:
         - containerPort: 5000
           name: http
           protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
       imagePullSecrets:
       - name: regcred
