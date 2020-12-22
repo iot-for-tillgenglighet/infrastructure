@@ -33,18 +33,32 @@ spec:
         env:
         - name: ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS
           value: "true"
-        - name: AZURESERVICEBUS_TOPICNAME
-          value: tillgangligavagar
+        - name: AZURESERVICEBUS_TOPICPATH
+          valueFrom:
+            secretKeyRef:
+              name: ingress-azure-servicebus-envvar
+              key: azureservicebus-topicpath
         - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
-          value: tillgangligavagarSub
+          valueFrom:
+            secretKeyRef:
+              name: ingress-azure-servicebus-envvar
+              key: azureservicebus-subscriptionname
         - name: AZURESERVICEBUS_CONNECTIONSTRING
           valueFrom:
             secretKeyRef:
               name: ingress-azure-servicebus-envvar
               key: azureservicebus-connectionstring
+        - name: BASE_URL
+          value: "https://iotsundsvall.se"
+        - name: DISTANCE
+          value: "30"
         ports:
         - containerPort: 5000
           name: http
           protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /WeatherForecast
+            port: 5000
       imagePullSecrets:
       - name: regcred
