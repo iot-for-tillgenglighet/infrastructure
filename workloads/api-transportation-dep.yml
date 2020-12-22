@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-transportation
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-transportation/api-transportation:prod-b1caaa07b86ba19c7f67be75b57c7bf496931765
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-transportation/api-transportation:prod-be72ddc82682fd30acab10de3e526e120dca4a74
         imagePullPolicy: IfNotPresent
         env:
         - name: TRANSPORTATION_API_PORT
