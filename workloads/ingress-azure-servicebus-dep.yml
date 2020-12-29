@@ -33,24 +33,24 @@ spec:
         env:
         - name: ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS
           value: "true"
-        - name: AZURESERVICEBUS_TOPICPATH
+        - name: DIWISE_ASB_TOPICPATH
           valueFrom:
             secretKeyRef:
               name: ingress-azure-servicebus-envvar
               key: azureservicebus-topicpath
-        - name: AZURESERVICEBUS_SUBSCRIPTIONNAME
+        - name: DIWISE_ASB_SUBSCRIPTIONNAME
           valueFrom:
             secretKeyRef:
               name: ingress-azure-servicebus-envvar
               key: azureservicebus-subscriptionname
-        - name: AZURESERVICEBUS_CONNECTIONSTRING
+        - name: DIWISE_ASB_CONNECTIONSTRING
           valueFrom:
             secretKeyRef:
               name: ingress-azure-servicebus-envvar
               key: azureservicebus-connectionstring
-        - name: BASE_URL
+        - name: DIWISE_CONTEXT_BROKER_URL
           value: "https://iotsundsvall.se"
-        - name: DISTANCE
+        - name: DIWISE_MAX_SEGMENT_DISTANCE
           value: "30"
         ports:
         - containerPort: 5000
