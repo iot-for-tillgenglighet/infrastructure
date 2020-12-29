@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: ingress-azure-servicebus
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-29836fb602e288dbaf99e401cea82791258aceac
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-azure-servicebus/ingress-azure-servicebus:prod-fce5efad0be5948144432868f4cd6632ef75207c
         imagePullPolicy: IfNotPresent
         env:
         - name: ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS
