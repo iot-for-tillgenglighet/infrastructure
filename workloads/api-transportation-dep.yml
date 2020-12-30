@@ -60,7 +60,7 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /ngsi-ld/v1/entities?type=RoadSegment
+            path: /health
             port: 8484
       imagePullSecrets:
       - name: regcred
