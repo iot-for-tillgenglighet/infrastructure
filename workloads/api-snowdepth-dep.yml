@@ -54,6 +54,14 @@ spec:
           value: 'require'
         - name: SNOWDEPTH_API_PORT
           value: '8282'
+        - name: NGSI_CTX_SRC_PROBLEMREPORT
+          value: http://api-problemreport-service.iot.svc.cluster.local/
+        - name: NGSI_CTX_SRC_TEMPERATURE
+          value: http://api-temperature-service.iot.svc.cluster.local/
+        - name: NGSI_CTX_SRC_TRANSPORTATION
+          value: http://api-transportation-service.iot.svc.cluster.local/
+        - name: NGSI_CTX_SRC_DEVICES
+          value: http://iot-device-registry-service.iot.svc.cluster.local/
         - name: RABBITMQ_HOST
           value: 'rabbitmq.iot.svc.cluster.local'
         ports:
