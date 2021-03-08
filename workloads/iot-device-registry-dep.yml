@@ -30,12 +30,32 @@ spec:
         image: docker.pkg.github.com/iot-for-tillgenglighet/iot-device-registry/iot-device-registry:prod-e285da2a8e16f8bd22159a88877bbede3761493e
         imagePullPolicy: IfNotPresent
         env:
+        - name: DIWISE_SQLDB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: iot-device-registry-envvar
+              key: db-host
+        - name: DIWISE_SQLDB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: iot-device-registry-envvar
+              key: db-name
+        - name: DIWISE_SQLDB_USER
+          valueFrom:
+            secretKeyRef:
+              name: iot-device-registry-envvar
+              key: db-user
+        - name: DIWISE_SQLDB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: iot-device-registry-envvar
+              key: db-password
         - name: SERVICE_PORT
-          value: '8080'
+          value: '8686'
         - name: RABBITMQ_HOST
           value: rabbitmq.iot.svc.cluster.local
         ports:
-        - containerPort: 8080
+        - containerPort: 8686
           name: http
           protocol: TCP
       imagePullSecrets:
