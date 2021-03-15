@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: iot-device-registry
-        image: docker.pkg.github.com/iot-for-tillgenglighet/iot-device-registry/iot-device-registry:prod-2d8b083f535e2a771b2ef53234eeb770b2e9a0ce
+        image: docker.pkg.github.com/iot-for-tillgenglighet/iot-device-registry/iot-device-registry:prod-613715fa7d41557f3eb0b5b43102690c1d0511d2
         imagePullPolicy: IfNotPresent
         env:
         - name: DIWISE_SQLDB_HOST
