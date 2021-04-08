@@ -54,6 +54,8 @@ spec:
           value: 'require'
         - name: SNOWDEPTH_API_PORT
           value: '8282'
+        - name: NGSI_CTX_SRC_POINTOFINTEREST
+          value: http://api-pointofinterest-service.iot.svc.cluster.local/
         - name: NGSI_CTX_SRC_PROBLEMREPORT
           value: http://api-problemreport-service.iot.svc.cluster.local/
         - name: NGSI_CTX_SRC_TEMPERATURE
