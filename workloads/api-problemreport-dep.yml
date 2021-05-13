@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: api-problemreport
-        image: docker.pkg.github.com/iot-for-tillgenglighet/api-problemreport/api-problemreport:prod-d058a40791f0bea4b4ab5c1244c1b3ae2dbfdfd8
+        image: docker.pkg.github.com/iot-for-tillgenglighet/api-problemreport/api-problemreport:prod-15585e53d897b1025d447836b30b9174072df80a
         imagePullPolicy: IfNotPresent
         env:
         - name: PROBLEMREPORT_DB_HOST
