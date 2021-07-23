@@ -27,50 +27,50 @@ spec:
     spec:
       containers:
       - name: ingress-mqtt-miun
-        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-8f356eeb458708e584f58757b7cba3474e4a2a52
+        image: docker.pkg.github.com/iot-for-tillgenglighet/ingress-mqtt/ingress-mqtt:prod-756d1ee8f1ab80a56a46dd1a33451e4649decfc5
         imagePullPolicy: IfNotPresent
         env:
-          - name: MQTT_HOST
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-host
-          - name: MQTT_PORT
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-port
-          - name: MQTT_TOPIC
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-topic
-          - name: MQTT_USER
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-user
-          - name: MQTT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-password
-          - name: MQTT_TLS_DISABLED
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-miun-envvar
-                key: mqtt-tls-disabled
-          - name: RABBITMQ_USER
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-envvar
-                key: rabbitmq-user
-          - name: RABBITMQ_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: ingress-mqtt-envvar
-                key: rabbitmq-password
-          - name: RABBITMQ_HOST
-            value: "rabbitmq.iot.svc.cluster.local"
+        - name: MQTT_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-host
+        - name: MQTT_PORT
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-port
+        - name: MQTT_TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-topic
+        - name: MQTT_USER
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-user
+        - name: MQTT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-password
+        - name: MQTT_TLS_DISABLED
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-miun-envvar
+              key: mqtt-tls-disabled
+        - name: RABBITMQ_USER
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: rabbitmq-user
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ingress-mqtt-envvar
+              key: rabbitmq-password
+        - name: RABBITMQ_HOST
+          value: "rabbitmq.iot.svc.cluster.local"
       imagePullSecrets:
-        - name: regcred
+      - name: regcred
